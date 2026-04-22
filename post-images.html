@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <email>Document</title>
+</head>
+
+<body style="background-color: #F4F7F6;">
+    <h1 style="display: flex; justify-content: center;">POST TODOS</h1>
+    <div id="card" style="display: flex; flex-wrap: wrap;"></div>
+</body>
+<script>
+    const display = document.getElementById("card")
+    async function postapi() {
+        try {
+            const theapi = await fetch("https://jsonplaceholder.typicode.com/photos")
+            console.log("theapi", theapi);
+            const makejson = await theapi.json();
+            console.log("this is the json", makejson)
+            display.innerHTML = makejson.map((todo) => (`
+            <div style="width: 420px; height: 300px; background-color: white; border-radius: 12px; box-shadow: 5px 5px 5px 5px #EAEDEC; padding: 20px; margin: 20px;">
+        <h1>id:<span>${todo.id}</span></h2>
+        <h2>title:${todo.title}</h2>
+        <p>url:<img src="${todo.url}" alt="" width="500" height="600"></p>
+        <p>thumbnailurl:<img src="${todo.thumbnailUrl}" alt="" width="500" height="600"></p>
+    </div>
+            `))
+        } catch (error) {
+            console.log("the error is:", error)
+        }
+    }
+    postapi()
+</script>
+
+</html>
