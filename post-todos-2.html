@@ -20,11 +20,18 @@
             const makejson = await theapi.json();
             console.log("this is the json", makejson)
             display.innerHTML = makejson.map((todo) => (`
-            <div style="width: 420px; height: 300px; background-color: white; border-radius: 12px; box-shadow: 5px 5px 5px 5px #EAEDEC; padding: 20px; margin: 20px;">
+            <div style="width: 420px; height: 420px; background-color: white; border-radius: 12px; box-shadow: 5px 5px 5px 5px #EAEDEC; padding: 20px; margin: 20px;">
         <h1>user:<span>${todo.username}</span></h2>
         <h2>email:${todo.email}</h2>
-        <p>street:${todo.street}</p>
+        <h3>name:${todo.name}</h3>
+        <h4>id:${todo.id}</h4>
+        <p>street:${todo.address.street}</p>
+        <p>city:${todo.address.city}</p>
+        <p>suite:${todo.address.suite}</p>
+        <p>zipcode:${todo.address.zipcode}</p>
         <p>name:${todo.name}</p>
+        <p>lat:${todo.address.geo.lat}</p>
+        <p>lng:${todo.address.geo.lng}</p>
     </div>
             `))
         } catch (error) {
