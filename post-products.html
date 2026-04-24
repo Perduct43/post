@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: F4F7F6;">
+    <div id="display">
+
+    </div>
+</body>
+<script>
+    const display = document.getElementById("display")
+    async function products() {
+        try {
+        const theapi = await fetch("https://dummyjson.com/products");
+        const thejson = await theapi.json(); 
+        display.innerHTML = thejson.products.map((todo)=>(`
+        <div style="width: 300px; height: 500px; border-radius: 12px; box-shadow: 5px 5px 5px 5px grey; padding: 20px; gap: 20px; background-color: white;">\
+        <img src="" alt="">
+        <h2 style="color: grey;">BEAUTY</h2>
+        <button style="background-color: rgb(67, 114, 235); border: none; width: 230px; height: 50px; border-radius: 8px;color: white;">
+            <h3>Add to cart</h3>
+        </button>
+    </div>
+        `))
+        } catch (error) {
+            console.log("the error is", error)
+        }
+    }
+    products()
+</script>
+</html>
