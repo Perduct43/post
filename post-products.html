@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body style="background-color: F4F7F6;">
-    <div id="display">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;" id="display">
 
     </div>
 </body>
@@ -17,9 +17,12 @@
         const theapi = await fetch("https://dummyjson.com/products");
         const thejson = await theapi.json(); 
         display.innerHTML = thejson.products.map((todo)=>(`
-        <div style="width: 300px; height: 500px; border-radius: 12px; box-shadow: 5px 5px 5px 5px grey; padding: 20px; gap: 20px; background-color: white;">\
-        <img src="" alt="">
+        <div style="width: 300px; height: 600px; border-radius: 12px; box-shadow: 5px 5px 5px 5px grey; padding: 20px; gap: 20px; background-color: white;">\
+        <img src="${todo.thumbnail}" alt="">
         <h2 style="color: grey;">BEAUTY</h2>
+        <h1>${todo.title}</h1>
+        <h2 style="color: green">$${todo.price}</h2>
+        <p>🗿⭐${todo.rating}/5</p>
         <button style="background-color: rgb(67, 114, 235); border: none; width: 230px; height: 50px; border-radius: 8px;color: white;">
             <h3>Add to cart</h3>
         </button>
